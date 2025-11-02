@@ -27,7 +27,6 @@ class Animal:
             Animal.alive.remove(self)
 
     def take_damage(self, amount: int) -> None:
-        """Уменьшает здоровье и убирает животное из списка живых, если здоровье <= 0."""
         self.health -= amount
         if self.health <= 0:
             self.die()
