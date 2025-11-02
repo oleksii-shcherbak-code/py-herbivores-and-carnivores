@@ -26,6 +26,12 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
+    def take_damage(self, amount: int) -> None:
+        """Уменьшает здоровье и убирает животное из списка живых, если здоровье <= 0."""
+        self.health -= amount
+        if self.health <= 0:
+            self.die()
+
 
 class Herbivore(Animal):
     def hide(self) -> None:
@@ -41,6 +47,4 @@ class Carnivore(Animal):
             return
         if victim.hidden or victim.health <= 0:
             return
-        victim.health -= 50
-        if victim.health <= 0:
-            victim.die()
+        victim.take_damage(50)
